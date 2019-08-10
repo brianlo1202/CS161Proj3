@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+{% autoescape off %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Delete Old Avatars!</h1>
+        <form action="/delete_avatars" method="post">
+        {% for avatar in avatars %}
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img class="avatar-image" src="{{ avatar }}">
+                </p>
+            </figure>
+            <div class="content">
+                <p>
+                    <strong>Delete? </strong><input name="avatar" type="checkbox" value={{ avatar }}>
+                </p>
+            </div>
+        </article>
+        {% endfor %}
+        <button type="submit" class="button is-primary">Delete Selected Avatars</button>
+        </form>
+    </div>
+</section>
+{% endautoescape %}
+{% endblock %}
+
